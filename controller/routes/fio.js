@@ -3,5 +3,6 @@ import { checkAPIKey } from "./middle";
 
 const route = require("express").Router();
 
-route.get("/blocknumber/eth", checkAPIKey , (req, res) => fioCtrl.getBlockNumber(req,res));
+route.get("/blocknumber/:net", checkAPIKey , (req, res) => fioCtrl.getBlockNumber(req,res));
+route.post("/setblocknumber/:net", checkAPIKey , (req, res) => fioCtrl.setBlockNumber(req,res));
 export default route;

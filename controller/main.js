@@ -1,5 +1,6 @@
-import fioRoute from './routes/fio';
+import config from '../config/config';
 
+import fioRoute from './routes/fio';
 const fs = require('fs');
 const cors = require("cors");
 
