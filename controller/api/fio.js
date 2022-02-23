@@ -21,11 +21,11 @@ class FIOCtrl {
       const data = await client.query(query);
       try {
           if(data.rowCount !== 0) {
-            res.send({"blockNumber":data.rows[0].block_number});
+            res.status(200).send({"blockNumber":data.rows[0].block_number});
             console.log("get success: ", data.rows[0].block_number)
           }
         } catch (error) { 
-          res.send({})
+          res.status(404).send({})
           console.log("get failed")
 
         }
@@ -37,12 +37,15 @@ class FIOCtrl {
       const query = `UPDATE tbl_blocknumber SET block_number='${blockNum}' FROM tbl_network WHERE tbl_blocknumber."id" = tbl_network."id"  AND tbl_network.network_name = '${net}' `
       const data = await client.query(query);
       try {
-          res.send({"success":true});
+          res.status(200).send({"success":true});
           console.log("set success: ", blockNum)
         } catch (error) {
-          res.send({"success":false});
+          res.status(404).send({"success":false});
           console.log("set failed")
         }
+    }
+    async health(req,res) {
+      res.status(200).send('OK!');
     }
 }
 
