@@ -106,7 +106,7 @@ class FIOCtrl {
     }
     async getUnwrapActionByComplete(req,res) {
       const client = await this.pool.connect();
-      const query = `SELECT * FROM tbl_unwrap_action WHERE tbl_unwrap_action.iscomplete = '${req.body.iscomplete}'`
+      const query = `SELECT * FROM tbl_unwrap_action WHERE tbl_unwrap_action.iscomplete = 0`
       const data = await client.query(query);
       let filteredAction = [];
       if(data.rows.length>0) {
