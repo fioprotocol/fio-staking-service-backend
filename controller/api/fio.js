@@ -67,7 +67,7 @@ class FIOCtrl {
         const data = await client.query(query);
         if(req.body.voters.length >0) {
           for (var i =0; i<req.body.voters.length;i++) {
-            const query1 = `UPDATE tbl_fio_voters SET chain_id='${req.body.chain_id}',obt_id='${req.body.obt_id}', fio_address='${req.body.voters[i]}'`;
+            const query1 = `UPDATE tbl_fio_voters SET chain_id='${req.body.chain_id}',obt_id='${req.body.obt_id}', voter='${req.body.voters[i]}'`;
             const data = await client.query(query1);
           }
         }
