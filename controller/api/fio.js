@@ -63,11 +63,11 @@ class FIOCtrl {
           }
         }
       } else {
-        const query = `UPDATE tbl_unwrap_action SET chain_id='${req.body.chain_id}',  obt_id='${req.body.obt_id}', fio_address='${req.body.fio_address}', token_amount='${req.body.token_amount}',nftname='${req.body.nftname}',block_number='${req.body.block_number}', fio_timestamp='${req.body.fio_timestamp}', iscomplete='${req.body.iscomplete}'`
+        const query = `UPDATE tbl_unwrap_action SET chain_id='${req.body.chain_id}',  obt_id='${req.body.obt_id}', fio_address='${req.body.fio_address}', token_amount='${req.body.token_amount}',nftname='${req.body.nftname}',block_number='${req.body.block_number}', fio_timestamp='${req.body.fio_timestamp}', iscomplete='${req.body.iscomplete}' WHERE tbl_unwrap_action.obt_id='${req.body.obt_id}'`
         const data = await client.query(query);
         if(req.body.voters.length >0) {
           for (var i =0; i<req.body.voters.length;i++) {
-            const query1 = `UPDATE tbl_fio_voters SET chain_id='${req.body.chain_id}',obt_id='${req.body.obt_id}', voter='${req.body.voters[i]}'`;
+            const query1 = `UPDATE tbl_fio_voters SET chain_id='${req.body.chain_id}',obt_id='${req.body.obt_id}', voter='${req.body.voters[i]}' WHERE tbl_fio_voters.obt_id='${req.body.obt_id}'`;
             const data = await client.query(query1);
           }
         }
